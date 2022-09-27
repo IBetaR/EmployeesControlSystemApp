@@ -18,41 +18,41 @@ public class EmployeesdbcontrolApplication {
 		SpringApplication.run(EmployeesdbcontrolApplication.class, args);
 	}
 
-	@Bean
-	CommandLineRunner runner(EmployeeRepository repository, MongoTemplate mongoTemplate, EmployeeService employeeService){
-		return args -> {
-
-			String username = "aru";
-			Address address = new Address(
-					"Venezuela",
-					"Barinas",
-					"5201"
-			);
-			String email = "aru@gmail.com";
-			Employee employee = new Employee(
-					null,
-					username,
-					"password",
-					"Aruma",
-					"Betancourt",
-					email,
-					Gender.FEMALE,
-					address,
-					LocalDateTime.now(),
-					EmployeeRole.ADMIN,
-					"null");
-
-
-			repository.findEmployeeByUsername(email).ifPresentOrElse(
-					s-> {
-						System.out.println(s + "already exist in Database");
-					}, () -> {
-						System.out.println("Inserting Employee to Database..." + employee.getFirstname()+ " " +employee.getLastname());
-						repository.insert(employee);
-					}
-			);
-		};
-
-	}
+//	@Bean
+//	CommandLineRunner runner(EmployeeRepository repository, MongoTemplate mongoTemplate, EmployeeService employeeService){
+//		return args -> {
+//
+//			String username = "ibr";
+//			Address address = new Address(
+//					"Venezuela",
+//					"Barinas",
+//					"5201"
+//			);
+//			String email = "aru@gmail.com";
+//			Employee employee = new Employee(
+//					null,
+//					username,
+//					"password",
+//					"Aruma",
+//					"Betancourt",
+//					email,
+//					Gender.FEMALE,
+//					address,
+//					LocalDateTime.now(),
+//					EmployeeRole.ADMIN,
+//					"null");
+//
+//
+//			repository.findByUsername(username).ifPresentOrElse(
+//					s-> {
+//						System.out.println(s.getUsername() + " : already exist in Database");
+//					}, () -> {
+//						System.out.println("Inserting Employee to Database..." + employee.getFirstname()+ " " +employee.getLastname());
+//						repository.insert(employee);
+//					}
+//			);
+//		};
+//
+//	}
 
 }

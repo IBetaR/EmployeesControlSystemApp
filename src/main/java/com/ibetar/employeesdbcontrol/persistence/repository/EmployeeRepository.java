@@ -8,6 +8,12 @@ import java.util.Optional;
 
 @Repository
 public interface EmployeeRepository extends MongoRepository<Employee, String> {
-    Optional<Employee> findEmployeeByUsername (String username);
+
+    Optional<Employee> findByUsername(String username);
+
+//    void delete(String username);
+
+//    Optional<Employee> createEmployee();
+
 
 }
